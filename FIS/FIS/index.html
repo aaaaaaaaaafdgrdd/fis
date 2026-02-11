@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus | Calm Pomodoro</title>
+
+    <!-- Google Fonts: Outfit for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-background"></div>
+
+    <main class="app-container">
+        <!-- Mode Selector -->
+        <nav class="mode-selector">
+            <button class="mode-btn active" data-mode="focus">Focus</button>
+            <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+            <button class="mode-btn" data-mode="longBreak">Long Break</button>
+        </nav>
+
+        <!-- Aesthetic Illustration -->
+        <div class="illustration-container">
+            <img src="timer-illustration.svg" alt="Aesthetic Timer Illustration" class="timer-img">
+        </div>
+
+        <!-- Timer Circle -->
+        <div class="timer-display">
+            <svg class="progress-ring" width="300" height="300">
+                <circle class="progress-ring__circle-bg" stroke="currentColor" stroke-width="8" fill="transparent"
+                    r="140" cx="150" cy="150" />
+                <circle class="progress-ring__circle" stroke="currentColor" stroke-width="8" fill="transparent" r="140"
+                    cx="150" cy="150" />
+            </svg>
+            <div class="time-text">25:00</div>
+            <div class="status-text">Time to focus</div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="control-btn main-action" id="toggle-timer">
+                <i class="ph-fill ph-play"></i>
+            </button>
+            <button class="control-btn secondary-action" id="reset-timer">
+                <i class="ph-bold ph-arrow-counter-clockwise"></i>
+            </button>
+        </div>
+
+        <!-- Tasks Section -->
+        <section class="tasks-section">
+            <div class="tasks-header">
+                <h2>Tasks</h2>
+                <span id="task-count">0/0</span>
+            </div>
+
+            <div class="task-input-wrapper">
+                <input type="text" id="new-task-input" placeholder="What are you working on?">
+                <button id="add-task-btn"><i class="ph-bold ph-plus"></i></button>
+            </div>
+
+            <ul class="task-list" id="task-list">
+                <!-- Tasks will be injected here -->
+            </ul>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

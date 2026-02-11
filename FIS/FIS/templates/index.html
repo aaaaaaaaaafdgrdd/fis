@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <h2>Welcome to the Future of Cloud</h2>
+    <p>Join us for a day of innovation, learning, and networking.</p>
+</section>
+
+<section class="search-section">
+    <input type="text" id="searchInput" placeholder="Search talks by title, speaker, or category...">
+</section>
+
+<section class="schedule">
+    <h3>Conference Schedule</h3>
+    <div class="timeline">
+        {% for talk in talks %}
+        <div class="talk-card" data-title="{{ talk.title }}" data-category="{{ talk.category }}"
+            data-speakers="{% for speaker in talk.speakers %}{{ speaker.first_name }} {{ speaker.last_name }} {% endfor %}">
+            <div class="time-slot">
+                <span class="time">{{ talk.time }}</span>
+            </div>
+            <div class="talk-details">
+                <span class="category tag-{{ talk.category|lower|replace(' ', '-')|replace('/', '') }}">{{ talk.category
+                    }}</span>
+                <h4 class="talk-title">{{ talk.title }}</h4>
+                <p class="talk-description">{{ talk.description }}</p>
+                {% if talk.speakers %}
+                <div class="speakers">
+                    <span class="speakers-label">Speakers:</span>
+                    {% for speaker in talk.speakers %}
+                    <a href="{{ speaker.linkedin }}" target="_blank" class="speaker-link">{{ speaker.first_name }} {{
+                        speaker.last_name }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="no-results" style="display: none; text-align: center; margin-top: 20px;">
+        <p>No talks found matching your search.</p>
+    </div>
+</section>
+{% endblock %}
